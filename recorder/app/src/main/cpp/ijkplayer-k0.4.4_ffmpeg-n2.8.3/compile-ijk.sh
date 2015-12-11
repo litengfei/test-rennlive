@@ -44,10 +44,10 @@ do_sub_cmd () {
 
     if [ "$PARAM_SUB_CMD" = 'prof' ]; then
         echo 'profiler build: YES';
-        ln -s ../../../../../../ijkprof/android-ndk-profiler/jni android-ndk-prof
+        ln -s ijkprof/android-ndk-profiler/jni android-ndk-prof
     else
         echo 'profiler build: NO';
-        ln -s ../../../../../../ijkprof/android-ndk-profiler-dummy/jni android-ndk-prof
+        ln -s ijkprof/android-ndk-profiler-dummy/jni android-ndk-prof
     fi
 
     case $SUB_CMD in
@@ -73,7 +73,6 @@ do_ndk_build () {
     case "$PARAM_TARGET" in
         armv5|armv7a)
             do_sub_cmd $PARAM_SUB_CMD
-            cd -
         ;;
         x86|arm64)
             cd "ijkplayer/ijkplayer-$PARAM_TARGET/src/main/jni"
