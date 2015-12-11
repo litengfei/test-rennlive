@@ -72,7 +72,6 @@ do_ndk_build () {
     PARAM_SUB_CMD=$2
     case "$PARAM_TARGET" in
         armv5|armv7a)
-            cd "ijkplayer/ijkplayer-$PARAM_TARGET/src/main/jni"
             do_sub_cmd $PARAM_SUB_CMD
             cd -
         ;;
