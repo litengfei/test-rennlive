@@ -17,6 +17,11 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 LOCAL_PATH := $(call my-dir)
+# install ffmpeg library first
+include $(CLEAR_VARS)
+LOCAL_MODULE := ijkffmpeg
+LOCAL_SRC_FILES := $(MY_APP_FFMPEG_OUTPUT_PATH)/libijkffmpeg.so
+include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_CFLAGS += -std=c99
