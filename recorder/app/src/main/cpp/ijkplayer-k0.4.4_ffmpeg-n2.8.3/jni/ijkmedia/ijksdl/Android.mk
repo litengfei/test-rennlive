@@ -26,6 +26,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)
 LOCAL_C_INCLUDES += $(realpath $(LOCAL_PATH)/..)
 LOCAL_C_INCLUDES += $(MY_APP_FFMPEG_INCLUDE_PATH)
 LOCAL_C_INCLUDES += $(realpath $(LOCAL_PATH)/../ijkyuv/include)
+$(warning "\nLOCAL_C_INCLUDES : $(LOCAL_C_INCLUDES)")
 
 LOCAL_SRC_FILES += ijksdl_aout.c
 LOCAL_SRC_FILES += ijksdl_audio.c

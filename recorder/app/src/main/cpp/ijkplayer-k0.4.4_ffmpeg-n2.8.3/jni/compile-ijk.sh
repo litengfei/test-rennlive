@@ -20,6 +20,8 @@ if [ -z "$ANDROID_NDK" -o -z "$ANDROID_NDK" ]; then
     echo "They must point to your NDK and SDK directories.\n"
     exit 1
 fi
+NDK_LOG="true"
+export NDK_LOG
 
 REQUEST_TARGET=$1
 REQUEST_SUB_CMD=$2
