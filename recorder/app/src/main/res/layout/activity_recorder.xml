@@ -23,7 +23,7 @@
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
             android:background="#ff999922">
-        <com.renren.mobile.android.recorder.RecorderView
+        <com.renren.mobile.android.live.recorder.RecorderView
                 android:id="@+id/recorder_surface"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"/>

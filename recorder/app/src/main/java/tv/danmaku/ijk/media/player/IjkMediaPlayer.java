@@ -50,6 +50,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
 
+import com.renren.library.live.PlayerLibraryLoader;
 import tv.danmaku.ijk.media.player.annotations.AccessedByNative;
 import tv.danmaku.ijk.media.player.annotations.CalledByNative;
 import tv.danmaku.ijk.media.player.misc.IMediaDataSource;
@@ -134,32 +135,6 @@ public final class IjkMediaPlayer extends AbstractMediaPlayer {
 
     private String mDataSource;
 
-    /**
-     * Default library loader
-     * Load them by yourself, if your libraries are not installed at default place.
-     */
-    private static final IjkLibLoader sLocalLibLoader = new IjkLibLoader() {
-        @Override
-        public void loadLibrary(String libName) throws UnsatisfiedLinkError, SecurityException {
-            System.loadLibrary(libName);
-        }
-    };
-
-    private static volatile boolean mIsLibLoaded = false;
-    public static void loadLibrariesOnce(IjkLibLoader libLoader) {
-        synchronized (IjkMediaPlayer.class) {
-            if (!mIsLibLoaded) {
-                if (libLoader == null)
-                    libLoader = sLocalLibLoader;
-
-                libLoader.loadLibrary("ijkffmpeg");
-                libLoader.loadLibrary("ijksdl");
-                libLoader.loadLibrary("ijkplayer");
-                mIsLibLoaded = true;
-            }
-        }
-    }
-
     private static volatile boolean mIsNativeInitialized = false;
     private static void initNativeOnce() {
         synchronized (IjkMediaPlayer.class) {
@@ -180,20 +155,11 @@ public final class IjkMediaPlayer extends AbstractMediaPlayer {
      * </p>
      */
     public IjkMediaPlayer() {
-        this(sLocalLibLoader);
+        initPlayer();
     }
 
-    /**
-     * do not loadLibaray
-     * @param libLoader
-     *              custom library loader, can be null.
-     */
-    public IjkMediaPlayer(IjkLibLoader libLoader) {
-        initPlayer(libLoader);
-    }
-
-    private void initPlayer(IjkLibLoader libLoader) {
-        loadLibrariesOnce(libLoader);
+    private void initPlayer() {
+        PlayerLibraryLoader.loadOnce();
         initNativeOnce();
 
         Looper looper;

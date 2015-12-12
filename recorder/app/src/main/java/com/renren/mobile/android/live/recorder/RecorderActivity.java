@@ -1,9 +1,10 @@
-package com.renren.mobile.android.recorder;
+package com.renren.mobile.android.live.recorder;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import com.renren.mobile.android.live.R;
 
 public class RecorderActivity extends Activity {
 

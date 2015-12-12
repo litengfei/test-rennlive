@@ -1,4 +1,4 @@
-package com.renren.mobile.android.recorder;
+package com.renren.mobile.android.live;
 
 
 import android.app.Activity;

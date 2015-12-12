@@ -1,18 +1,12 @@
-package com.renren.mobile.android.recorder;
+package com.renren.mobile.android.live.recorder;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
-import android.media.CamcorderProfile;
-import android.media.MediaRecorder;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
-import java.io.IOException;
 
 /**
  * @author tengfei.li@renren-inc.com
