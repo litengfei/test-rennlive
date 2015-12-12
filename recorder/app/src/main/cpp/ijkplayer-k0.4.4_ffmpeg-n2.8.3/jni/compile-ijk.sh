@@ -20,8 +20,8 @@ if [ -z "$ANDROID_NDK" -o -z "$ANDROID_NDK" ]; then
     echo "They must point to your NDK and SDK directories.\n"
     exit 1
 fi
-NDK_LOG="true"
-export NDK_LOG
+#NDK_LOG="true"
+#export NDK_LOG
 
 REQUEST_TARGET=$1
 REQUEST_SUB_CMD=$2
@@ -73,8 +73,14 @@ do_ndk_build () {
     PARAM_TARGET=$1
     PARAM_SUB_CMD=$2
     case "$PARAM_TARGET" in
-        armv5|armv7a)
+        armv5)
             do_sub_cmd $PARAM_SUB_CMD
+        ;;
+        armv7a)
+            do_sub_cmd $PARAM_SUB_CMD
+			rm -rf ../../../../../libs/armeabi-v7a
+			cp -r ../libs/armeabi-v7a ../../../../../libs/
+			echo " \"libs/armeabi-v7a\" updated."
         ;;
         x86|arm64)
             cd "ijkplayer/ijkplayer-$PARAM_TARGET/src/main/jni"
