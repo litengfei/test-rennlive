@@ -78,8 +78,8 @@ do_ndk_build () {
         ;;
         armv7a)
             do_sub_cmd $PARAM_SUB_CMD
-			rm -rf ../../../../../libs/armeabi-v7a
-			cp -r ../libs/armeabi-v7a ../../../../../libs/
+			rm -rf ../../../jniLibs/armeabi-v7a
+			cp -r ../libs/armeabi-v7a ../../../jniLibs/
 			echo " \"libs/armeabi-v7a\" updated."
         ;;
         x86|arm64)
