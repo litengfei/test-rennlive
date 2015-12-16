@@ -1,3 +1,8 @@
 /libs/
 /obj/
 /jni/android-ndk-prof
+/jni/cscope.files
+/jni/cscope.in.out
+/jni/cscope.out
+/jni/cscope.po.out
+/jni/tags

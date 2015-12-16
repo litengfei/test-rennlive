@@ -20,5 +20,5 @@ LOCAL_SRC_FILES += renndebug.c
 
 LOCAL_SHARED_LIBRARIES := ijkffmpeg ijksdl
 
-LOCAL_MODULE := rennrecorder
+LOCAL_MODULE := rennlive
 include $(BUILD_SHARED_LIBRARY)
