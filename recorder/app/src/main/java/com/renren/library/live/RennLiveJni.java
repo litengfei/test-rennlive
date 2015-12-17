@@ -6,4 +6,19 @@ package com.renren.library.live;
  */
 public class RennLiveJni {
 
+    static {
+        System.loadLibrary("rennlive");
+    }
+
+    private static native void native_init();
+
+    private static native void native_setup(Object obj);
+
+    private static native void native_finalize();
+
+    public static void test(){
+        native_init();
+        native_setup(null);
+        native_finalize();
+    }
 }

@@ -2,10 +2,32 @@
  * @author tengfei.li@renren-inc.com
  * @since 15/12/14, 下午3:23
  */
-
-#include "rennlivejni.h"
+#include <assert.h>
 #include <jni.h>
 #include <pthread.h>
+#include "rennlivejni.h"
+#include "renn_common_macros.h"
+#include "renn_log.h"
+
+static JavaVM *g_jvm;
+
+
+
+static void renn_live_native_init(JNIEnv *env)
+{
+    ALOGE("renn_live_native_init() called");
+}
+
+static void renn_live_native_setup(JNIEnv *env, jobject thiz, jobject weak_this)
+{
+    ALOGE("renn_live_native_setup() called");
+}
+
+static void renn_live_native_finalize(JNIEnv *env, jobject thiz, jobject name, jobject value)
+{
+    ALOGE("renn_live_native_finalize() called");
+}
+
 
 static JNINativeMethod g_methods[] = {
         {"native_init",     "()V",                   (void *) renn_live_native_init},
@@ -15,26 +37,23 @@ static JNINativeMethod g_methods[] = {
 
 JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved)
 {
+    ALOGE("JNI_OnLoad() called");
     JNIEnv* env = NULL;
-
+__android_log_print(ANDROID_LOG_ERROR, RENN_LOG_TAG, "JNI_OnLoad() called");
     g_jvm = vm;
     if ((*vm)->GetEnv(vm, (void**) &env, JNI_VERSION_1_4) != JNI_OK) {
         return -1;
     }
     assert(env != NULL);
 
-    // FindClass returns LocalReference
-    IJK_FIND_JAVA_CLASS(env, g_clazz.clazz, JNI_CLASS_IJKPLAYER);
-    (*env)->RegisterNatives(env, g_clazz.clazz, g_methods, NELEM(g_methods) );
+    jclass cls = (*env)->FindClass(env, RENN_LIVE_JNI_JAVA_CLASS);
 
-    ijkmp_global_init();
-    ijkmp_global_set_inject_callback(inject_callback);
-
-    FFmpegApi_global_init(env);
+    (*env)->RegisterNatives(env, cls, g_methods, NELEM(g_methods) );
 
     return JNI_VERSION_1_4;
 }
 
 JNIEXPORT void JNI_OnUnload(JavaVM *jvm, void *reserved)
 {
+    ALOGE("JNI_OnUnload() called");
 }

@@ -80,7 +80,7 @@ do_ndk_build () {
             do_sub_cmd $PARAM_SUB_CMD
 			rm -rf ../../../jniLibs/armeabi-v7a
 			cp -r ../libs/armeabi-v7a ../../../jniLibs/
-			echo " \"libs/armeabi-v7a\" updated."
+			echo " \"jniLibs/armeabi-v7a\" updated."
         ;;
         x86|arm64)
             cd "ijkplayer/ijkplayer-$PARAM_TARGET/src/main/jni"

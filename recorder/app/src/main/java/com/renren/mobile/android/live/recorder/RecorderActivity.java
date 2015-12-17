@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import com.renren.library.live.RennLiveJni;
 import com.renren.mobile.android.live.R;
 
 public class RecorderActivity extends Activity {
 
     private Button mBtnStartRecord;
     private Button mBtnStopRecord;
+    private Button mBtnTest;
     private RecorderView mRecorderView;
 
 
@@ -24,6 +26,7 @@ public class RecorderActivity extends Activity {
         setContentView(R.layout.activity_recorder);
         mBtnStartRecord = (Button)findViewById(R.id.recorder_btn_start_record);
         mBtnStopRecord = (Button)findViewById(R.id.recorder_btn_stop_record);
+        mBtnTest = (Button)findViewById(R.id.recorder_btn_test);
         mRecorderView = (RecorderView)findViewById(R.id.recorder_surface);
 
         mBtnStartRecord.setOnClickListener(new View.OnClickListener() {
@@ -40,5 +43,12 @@ public class RecorderActivity extends Activity {
             }
         });
 
+
+        mBtnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RennLiveJni.test();
+            }
+        });
     }
 }

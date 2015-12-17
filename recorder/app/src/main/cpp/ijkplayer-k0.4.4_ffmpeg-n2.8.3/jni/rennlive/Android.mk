@@ -15,6 +15,7 @@ LOCAL_LDLIBS += -llog -landroid
 LOCAL_C_INCLUDES += $(LOCAL_PATH)
 LOCAL_C_INCLUDES += $(MY_APP_FFMPEG_INCLUDE_PATH)
 
+LOCAL_SRC_FILES += rennlivejni.c
 LOCAL_SRC_FILES += rennrecorder.c
 LOCAL_SRC_FILES += renndebug.c
 

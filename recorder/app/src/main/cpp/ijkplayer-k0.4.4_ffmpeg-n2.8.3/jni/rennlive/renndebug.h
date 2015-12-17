@@ -14,3 +14,7 @@
 #define LOGSTUB_D ALOGD("%s\n", __func__);
 #endif
 
+#ifndef LOGSTUB_E
+#define LOGSTUB_E ALOGE("%s\n", __func__);
+#endif
+
