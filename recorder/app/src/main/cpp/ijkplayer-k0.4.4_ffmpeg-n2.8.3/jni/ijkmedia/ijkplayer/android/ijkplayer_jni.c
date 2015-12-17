@@ -925,7 +925,6 @@ IjkMediaPlayer_native_profileBegin(JNIEnv *env, jclass clazz, jstring libName)
     JNI_CHECK_GOTO(c_lib_name, env, "java/lang/OutOfMemoryError", "mpjni: monstartup: libName.string oom", LABEL_RETURN);
 
     s_monstartup = 1;
-    monstartup(c_lib_name);
     ALOGD("monstartup: %s\n", c_lib_name);
 
 LABEL_RETURN:
@@ -945,7 +944,6 @@ IjkMediaPlayer_native_profileEnd(JNIEnv *env, jclass clazz)
     }
 
     s_moncleanup = 1;
-    moncleanup();
     ALOGD("moncleanup\n");
 }
 
