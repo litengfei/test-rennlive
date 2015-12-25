@@ -164,12 +164,6 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved)
     ALOGE("JNI_OnLoad() called");
 
 
-ALOGE("%s",configurationinfo());
-ALOGE("%s",urlprotocolinfo());
-ALOGE("%s",avformatinfo());
-ALOGE("%s",avcodecinfo());
-ALOGE("%s",avfilterinfo());
-
     JNIEnv* env = NULL;
     g_jvm = vm;
     if ((*vm)->GetEnv(vm, (void**) &env, JNI_VERSION_1_4) != JNI_OK) {
