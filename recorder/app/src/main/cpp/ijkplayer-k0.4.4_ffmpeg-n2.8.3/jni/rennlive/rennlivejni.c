@@ -135,7 +135,21 @@ char * configurationinfo()
 }
 
 
+static void test(){
+    av_register_all();
+	AVFormatContext *pFormateCtx;
+	if(av_open_input_file(&pFormateCtx, "", NULL, 0, NULL)!=0)
+	{
+    	ALOGE("av_open_input_file failed");
+		return;
+	}
+	
 
+
+
+
+
+}
 
 static void renn_live_native_init(JNIEnv *env)
 {
