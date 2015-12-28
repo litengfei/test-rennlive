@@ -143,7 +143,48 @@ static void test(){
     	ALOGE("av_open_input_file failed");
 		return;
 	}
+	if(av_find_stream_info(pFormateCtx)<0){
+		ALOGE("av_find_stream_info failed");
+		return;
+	}
+	dump_format(pFormateCtx, 0, "", 0);
+
+	int i;
+	AVCodecContext *pCodecCtx;
+	int videoStream = -1;
+	for(i=0;i<pFormateCtx->nb_streams; i++){
+		if(pFormateCtx->streams[i]->codec->codec_type == AVMEDIA_TYPE_VIDEO){
+			videoStream = i;
+			break;
+		}
+	}
+	if(videoStream == -1){
+		ALOGE("find videoStream failed");
+		return;
+	}
+
+	pCodecCtx = pFormateCtx->streams[videoStream]->codec;
+	AVCodec *pCodec;
+	pCodec = avcodec_find_decorder(pCodecCtx->codec_id);
+	if(pCodec == NULL){
+		ALOGE("find decorder error");
+		return;
+	}	
+	if(avcodec_open(pCodecCtx, pCodec)<0){
+		ALOGE("codec open error");
+		return;
+	}
+
+	AVFrame *pFrame;
+	pFrame = avcodec_alloc_frame();
+	if(pFrame==NULL){
+		ALOGE("alloc frame error");
+		return;
+	}	
 	
+	uint8_t *buffer;
+	int numBytes;
+//	numBytes = avpicture_get_size(PIX_FMT_BGR
 
 
 
@@ -158,6 +199,7 @@ static void renn_live_native_init(JNIEnv *env)
 
 static void renn_live_native_setup(JNIEnv *env, jobject thiz, jobject weak_this)
 {
+	test();
     ALOGE("renn_live_native_setup() called");
 }
 
