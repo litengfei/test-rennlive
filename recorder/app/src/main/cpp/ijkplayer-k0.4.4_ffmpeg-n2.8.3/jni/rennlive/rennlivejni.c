@@ -20,7 +20,9 @@ static void test(){
     av_register_all();
 	
 	AVFormatContext *ic;
-	ic = avf 
+	
+	avformat_
+	ic = avformat_ 
 	
 	
 

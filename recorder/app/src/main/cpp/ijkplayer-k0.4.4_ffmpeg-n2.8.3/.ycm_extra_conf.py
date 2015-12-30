@@ -39,10 +39,11 @@ flags = [
 '-isystem',
 '/Library/Developer/CommandLineTools/usr/bin/../lib/c++/v1',
 '-isystem',
-'./jni/contrib/build/ffmpeg-armv7a/output/include',
+'jni/contrib/build/ffmpeg-armv7a/output/include',
 '-isystem',
 '/home/f/devtool/android-ndk-r10e/platforms/android-9/arch-arm/usr/include',
-#'/Users/f/devtool/android-ndk-r10e/platforms/android-9/arch-arm/usr/include',
+'-isystem',
+'/Users/f/devtool/android-ndk-r10e/platforms/android-9/arch-arm/usr/include',
 ]
 
 
