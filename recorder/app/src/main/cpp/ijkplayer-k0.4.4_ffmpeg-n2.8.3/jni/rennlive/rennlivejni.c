@@ -17,17 +17,54 @@
 static JavaVM *g_jvm;
 
 static void test(){
+	avcodec_register_all();
     av_register_all();
 	
 	AVFormatContext *ic;
 	
-	avformat_
-	ic = avformat_ 
-	
-	
 
+
+	ic = avformat_alloc_context();
+	if(!ic){
+		ALOGE("avformat_alloc_context failed");
+		return;
+	}
+
+
+//	ic = 
 
 }
+
+static void tutorial01(){
+	av_register_all();
+	AVFormatContext *pFormatCtx = NULL;
+
+	if (avformat_open_input(&pFormatCtx, "", NULL, NULL)!=0)
+	{
+		ALOGE("couldn't open file");
+		return;
+	}
+
+	if(avformat_find_stream_info(pFormatCtx, NULL)<0){
+		ALOGE("couldn't find stream info");
+		return;
+	}
+
+	int i;
+	int videoStream = -1;
+	for(i=0; i<pFormatCtx->nb_streams; i++) {
+		if(	pFormatCtx->streams[i]->codec->codec_type == AVMEDIA_TYPE_VIDEO) {
+			videoStream = i;
+			break;
+		}
+	}
+
+	if (videoStream == -1){
+		ALOGE("no video stream");
+		return;
+	}
+}
+
 
 static void renn_live_native_init(JNIEnv *env)
 {
