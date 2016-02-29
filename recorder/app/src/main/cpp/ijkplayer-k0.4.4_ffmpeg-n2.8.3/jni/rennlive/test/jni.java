@@ -1,5 +1,5 @@
 public class jni {
-	private static native void onPreviewFrame(byte[] data);
+	private static native int onPreviewFrame(byte[] data);
 }	
 
 
